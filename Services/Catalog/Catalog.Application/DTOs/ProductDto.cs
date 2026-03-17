@@ -11,7 +11,8 @@ public record ProductDto(
     string ImageFile,
     BrandDto Brand,
     TypeDto Type,
-    decimal Price
+    decimal Price,
+    DateTime CreatedAt
     );
 
 
@@ -27,7 +28,7 @@ public record ProductDto(
         [Required]
         public string Description{ get; init; }
         [Required]
-        public string Image{ get; init; }
+        public string ImageFile{ get; init; }
         [Required]
         public string BrandId{ get; init; }
         [Required]
@@ -45,7 +46,7 @@ public record ProductDto(
         [Required]
         public string Description{ get; init; }
         [Required]
-        public string Image{ get; init; }
+        public string ImageFile{ get; init; }
         [Required]
         public string BrandId{ get; init; }
         [Required]
