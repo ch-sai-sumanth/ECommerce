@@ -20,9 +20,8 @@ BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String))
 
 // Add services to the container.
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
 
+builder.Services.AddControllers();
 //Add swagger services
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -55,15 +54,12 @@ using (var scope = app.Services.CreateScope())
     await DatabaseSeeder.SeedAsync(options);
 }
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
-//Enable swagger
-app.UseSwagger();
-app.UseSwaggerUI();
 
 
 app.UseHttpsRedirection();

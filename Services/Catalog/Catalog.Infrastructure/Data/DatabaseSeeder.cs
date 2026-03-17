@@ -20,7 +20,7 @@ public class DatabaseSeeder
         var types = db.GetCollection<ProductType>(settings.TypesCollectionName);
 
 
-        var seedBasePath = Path.Combine("Data", "SeedData");
+        var seedBasePath = Path.Combine(AppContext.BaseDirectory, "Data", "SeedData");
 
 
         //seed brands
