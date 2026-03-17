@@ -1,9 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{C4847E9E-4798-45B3-89BC-6B6BB64E32BB}"
-	ProjectSection(SolutionItems) = preProject
-		Services\docker-compose.override.yml = Services\docker-compose.override.yml
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{EAED7EC5-2EA4-403E-B17F-D6462935B6F5}"
 EndProject
@@ -14,6 +11,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Infrastructure", "Services\Catalog\Catalog.Infrastructure\Catalog.Infrastructure.csproj", "{CD7080B6-FFBA-4023-B398-5BDBF17A06FD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Core", "Services\Catalog\Catalog.Core\Catalog.Core.csproj", "{77B92A16-5477-439A-B937-EBBFF48947C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{939378E9-A802-4AA1-9793-DCC2DFE54580}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.API", "Services\Basket\Basket.API\Basket.API.csproj", "{344112EB-157F-4F55-978C-F9C65B202F39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.Application", "Services\Basket\Basket.Application\Basket.Application.csproj", "{959F3A19-734C-4680-A94B-1154134E6C7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.Core", "Services\Basket\Basket.Core\Basket.Core.csproj", "{C89F357B-49D0-4A5A-95A6-CEBE70FBEFD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.Infrstructure", "Services\Basket\Basket.Infrstructure\Basket.Infrstructure.csproj", "{2C6D300C-A93F-43C5-B828-A12761ED2514}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +33,11 @@ Global
 		{A9A6C7C2-2060-454C-A522-5CD035191F34} = {EAED7EC5-2EA4-403E-B17F-D6462935B6F5}
 		{CD7080B6-FFBA-4023-B398-5BDBF17A06FD} = {EAED7EC5-2EA4-403E-B17F-D6462935B6F5}
 		{77B92A16-5477-439A-B937-EBBFF48947C4} = {EAED7EC5-2EA4-403E-B17F-D6462935B6F5}
+		{939378E9-A802-4AA1-9793-DCC2DFE54580} = {C4847E9E-4798-45B3-89BC-6B6BB64E32BB}
+		{344112EB-157F-4F55-978C-F9C65B202F39} = {939378E9-A802-4AA1-9793-DCC2DFE54580}
+		{959F3A19-734C-4680-A94B-1154134E6C7B} = {939378E9-A802-4AA1-9793-DCC2DFE54580}
+		{C89F357B-49D0-4A5A-95A6-CEBE70FBEFD2} = {939378E9-A802-4AA1-9793-DCC2DFE54580}
+		{2C6D300C-A93F-43C5-B828-A12761ED2514} = {939378E9-A802-4AA1-9793-DCC2DFE54580}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{22235A18-FA14-4AA5-88FB-E15B6C347BD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -44,5 +56,21 @@ Global
 		{77B92A16-5477-439A-B937-EBBFF48947C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77B92A16-5477-439A-B937-EBBFF48947C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77B92A16-5477-439A-B937-EBBFF48947C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{344112EB-157F-4F55-978C-F9C65B202F39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{344112EB-157F-4F55-978C-F9C65B202F39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{344112EB-157F-4F55-978C-F9C65B202F39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{344112EB-157F-4F55-978C-F9C65B202F39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{959F3A19-734C-4680-A94B-1154134E6C7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{959F3A19-734C-4680-A94B-1154134E6C7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{959F3A19-734C-4680-A94B-1154134E6C7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{959F3A19-734C-4680-A94B-1154134E6C7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C89F357B-49D0-4A5A-95A6-CEBE70FBEFD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C89F357B-49D0-4A5A-95A6-CEBE70FBEFD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C89F357B-49D0-4A5A-95A6-CEBE70FBEFD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C89F357B-49D0-4A5A-95A6-CEBE70FBEFD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C6D300C-A93F-43C5-B828-A12761ED2514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C6D300C-A93F-43C5-B828-A12761ED2514}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C6D300C-A93F-43C5-B828-A12761ED2514}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C6D300C-A93F-43C5-B828-A12761ED2514}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
