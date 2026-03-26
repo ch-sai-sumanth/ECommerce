@@ -1,5 +1,24 @@
 # This is a generated file. Not intended for manual editing.
 services:
+  basket:
+    build:
+      context: "/home/saisumanth/RiderProjects/CleanArchitecture/ECommerce"
+      dockerfile: "Services/Basket/Basket.API/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net10.0/Basket.API.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "basket:dev"
+    ports: []
+    volumes:
+    - "/home/saisumanth/RiderProjects/CleanArchitecture/ECommerce/Services/Basket/Basket.API:/app:rw"
+    - "/home/saisumanth/RiderProjects/CleanArchitecture/ECommerce:/src:rw"
+    - "/home/saisumanth/.nuget/packages:/home/app/.nuget/packages"
+    working_dir: "/app"
   catalog:
     build:
       context: "/home/saisumanth/RiderProjects/CleanArchitecture/ECommerce"
@@ -8,7 +27,7 @@ services:
     command: []
     entrypoint:
     - "dotnet"
-    - "/app/bin/Debug/net9.0/Catalog.API.dll"
+    - "/app/bin/Debug/net10.0/Catalog.API.dll"
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
       DOTNET_USE_POLLING_FILE_WATCHER: "true"
