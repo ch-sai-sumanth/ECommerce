@@ -38,3 +38,22 @@ services:
     - "/home/saisumanth/RiderProjects/CleanArchitecture/ECommerce:/src:rw"
     - "/home/saisumanth/.nuget/packages:/home/app/.nuget/packages"
     working_dir: "/app"
+  discount:
+    build:
+      context: "/home/saisumanth/RiderProjects/CleanArchitecture/ECommerce"
+      dockerfile: "Services/Discount/Discount.API/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net10.0/Discount.API.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "discount:dev"
+    ports: []
+    volumes:
+    - "/home/saisumanth/RiderProjects/CleanArchitecture/ECommerce/Services/Discount/Discount.API:/app:rw"
+    - "/home/saisumanth/RiderProjects/CleanArchitecture/ECommerce:/src:rw"
+    - "/home/saisumanth/.nuget/packages:/home/app/.nuget/packages"
+    working_dir: "/app"

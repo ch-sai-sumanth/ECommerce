@@ -1,41 +1,39 @@
+using System.Reflection;
+using Discount.API.Services;
+using Discount.Application.Handlers;
+using Discount.Core.Repositories;
+using Discount.Infrastructure.Repositories;
+using Discount.Infrastructure.Settings;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+var assemblies = new Assembly[]
+{
+    Assembly.GetExecutingAssembly(),
+    typeof(CreateDiscountHandler).Assembly
+};
+
+builder.Services.AddMediatR(
+    cfg => cfg.RegisterServicesFromAssemblies(assemblies));
+
+builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
+builder.Services.AddGrpc();
+
+//Database Settings
+builder.Services.Configure<DatabaseSettings>(
+    builder.Configuration.GetSection("DatabaseSettings"));
+
+// This tells the DI container: "When someone asks for a Grpc Logger, give them the default one"
+builder.Services.AddSingleton<Grpc.Core.Logging.ILogger>(Grpc.Core.GrpcEnvironment.Logger);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.MigrateDatabase();
+app.UseRouting();
+app.UseEndpoints(ep =>
 {
-    app.MapOpenApi();
-}
-
-app.UseHttpsRedirection();
-
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-    {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast");
+    ep.MapGrpcService<DiscountService>();
+});
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
