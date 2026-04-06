@@ -4,5 +4,5 @@ namespace Ordering.Core.Repositories;
 
 public interface IOrderRepository : IAsyncRepository<Order>
 {
-    Task<List<Order>> GetOrdersByUserName(string userName);
+    Task<IEnumerable<Order>> GetOrdersByUserName(string userName);
 }
